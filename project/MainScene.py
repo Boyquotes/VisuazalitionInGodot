@@ -4,11 +4,15 @@ from godot import *
 import numpy as np
 import sklearn
 import pandas as pd
+import matplotlib.pyplot as plt
 
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 df = pd.read_csv(url, names=['sepal length','sepal width','petal length','petal width','target'])
 
 print(df.head())
+plt.plot([1, 2, 3, 4])
+plt.ylabel('some numbers')
+#plt.show()
 
 
 @exposed
@@ -24,4 +28,4 @@ class MainScene(Node2D):
 		Initialization here.
 		"""
 		print(np.array([1,3,4]))
-		pass
+		print("Godot on Steam")
