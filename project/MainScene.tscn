@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://MainScene.py" type="Script" id=1]
+[ext_resource path="res://MainScene.gd" type="Script" id=1]
+[ext_resource path="res://PipelineScene.tscn" type="PackedScene" id=2]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
+dropdown_path = NodePath("MainContainer/HBoxContainer/VBoxContainer/VisualizeButton")
 
 [node name="MainContainer" type="MarginContainer" parent="."]
 margin_left = -1.49835
@@ -20,7 +22,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 1255.0
+margin_right = 1254.0
 margin_bottom = 698.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/HBoxContainer"]
@@ -134,56 +136,60 @@ __meta__ = {
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MainContainer/HBoxContainer"]
 margin_left = 124.0
-margin_right = 1235.0
+margin_right = 1234.0
 margin_bottom = 678.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 1111.0
+margin_right = 1110.0
 margin_bottom = 576.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.56
 custom_constants/margin_right = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MainContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
-margin_right = 1111.0
+margin_right = 1110.0
 margin_bottom = 576.0
 
-[node name="Label" type="Label" parent="MainContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
-margin_top = 281.0
-margin_right = 1111.0
-margin_bottom = 295.0
-text = "Here comes the pipeline"
-align = 1
+[node name="ViewportContainer" type="ViewportContainer" parent="MainContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+margin_right = 1110.0
+margin_bottom = 576.0
+
+[node name="Viewport" type="Viewport" parent="MainContainer/HBoxContainer/VBoxContainer2/MarginContainer/ViewportContainer"]
+size = Vector2( 400, 400 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="PipelineScene" parent="MainContainer/HBoxContainer/VBoxContainer2/MarginContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 580.0
-margin_right = 1111.0
+margin_right = 1110.0
 margin_bottom = 678.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_right = 984.0
+margin_right = 983.0
 margin_bottom = 98.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 33.0
-margin_right = 977.0
+margin_right = 976.0
 margin_bottom = 64.0
 text = "Here comes the output
 "
 
 [node name="VSeparator2" type="VSeparator" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 988.0
-margin_right = 1008.0
+margin_left = 987.0
+margin_right = 1007.0
 margin_bottom = 98.0
 custom_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 1012.0
-margin_right = 1087.0
+margin_left = 1011.0
+margin_right = 1086.0
 margin_bottom = 98.0
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
@@ -210,7 +216,8 @@ custom_constants/separation = 35
 
 [node name="VSeparator" type="VSeparator" parent="MainContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 1091.0
-margin_right = 1111.0
+margin_left = 1090.0
+margin_right = 1110.0
 margin_bottom = 98.0
 custom_constants/separation = 20
+[connection signal="pressed" from="MainContainer/HBoxContainer/VBoxContainer/loadDBButton" to="." method="_on_loadDBButton_pressed"]

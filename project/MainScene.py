@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 df = pd.read_csv(url, names=['sepal length','sepal width','petal length','petal width','target'])
-
-print(df.head())
 plt.plot([1, 2, 3, 4])
 plt.ylabel('some numbers')
 #plt.show()
@@ -27,5 +25,7 @@ class MainScene(Node2D):
 		Called every time the node is added to the scene.
 		Initialization here.
 		"""
-		print(np.array([1,3,4]))
-		print("Godot on Steam")
+		pass
+		
+	def _on_loadDBButton_pressed(self):
+		print('Load Data Base')

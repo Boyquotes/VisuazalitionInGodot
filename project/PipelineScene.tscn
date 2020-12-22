@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="PipelineScene" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 269.695
+margin_top = 143.837
+margin_right = 486.695
+margin_bottom = 239.837
+text = "This should be a algoritm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
